@@ -120,3 +120,35 @@
     @apply bg-background text-foreground;
   }
 }
+/* Add color utilities for dynamic colors */
+.bg-blue-100 { background-color: rgb(219 234 254); }
+.text-blue-600 { color: rgb(37 99 235); }
+.bg-blue-600 { background-color: rgb(37 99 235); }
+
+.bg-purple-100 { background-color: rgb(243 232 255); }
+.text-purple-600 { color: rgb(147 51 234); }
+.bg-purple-600 { background-color: rgb(147 51 234); }
+
+.bg-green-100 { background-color: rgb(220 252 231); }
+.text-green-600 { color: rgb(22 163 74); }
+.bg-green-600 { background-color: rgb(22 163 74); }
+
+.bg-orange-100 { background-color: rgb(254 237 213); }
+.text-orange-600 { color: rgb(234 88 12); }
+.bg-orange-600 { background-color: rgb(234 88 12); }
+
+.bg-pink-100 { background-color: rgb(252 231 243); }
+.text-pink-600 { color: rgb(219 39 119); }
+.bg-pink-600 { background-color: rgb(219 39 119); }
+
+.bg-red-100 { background-color: rgb(254 226 226); }
+.text-red-600 { color: rgb(220 38 38); }
+.bg-red-600 { background-color: rgb(220 38 38); }
+
+.bg-indigo-100 { background-color: rgb(224 231 255); }
+.text-indigo-600 { color: rgb(79 70 229); }
+.bg-indigo-600 { background-color: rgb(79 70 229); }
+
+.bg-yellow-100 { background-color: rgb(254 249 195); }
+.text-yellow-600 { color: rgb(202 138 4); }
+.bg-yellow-600 { background-color: rgb(202 138 4); }
