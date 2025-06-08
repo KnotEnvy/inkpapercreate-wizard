@@ -1,43 +1,12 @@
-'use client';
-// components/StartupTracker.tsx   
+'use client'
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { 
-  Check, ChevronDown, ChevronRight, Download, ExternalLink, CheckCircle2,
-  Building2, FileText, CreditCard, Receipt, Calculator, Shield, Globe,
-  Lightbulb, Rocket, TrendingUp, Sparkles, Clock, Target, Award
-} from 'lucide-react';
-
-// Section icons mapping
-const sectionIcons = {
-  'form-llc': Building2,
-  'register-dba': FileText,
-  'banking': CreditCard,
-  'taxes-licenses': Receipt,
-  'accounting': Calculator,
-  'insurance': Shield,
-  'digital': Globe,
-  'intellectual-property': Lightbulb
-};
-
-// Section colors for visual variety
-const sectionColors = {
-  'form-llc': 'blue',
-  'register-dba': 'purple',
-  'banking': 'green',
-  'taxes-licenses': 'orange',
-  'accounting': 'pink',
-  'insurance': 'red',
-  'digital': 'indigo',
-  'intellectual-property': 'yellow'
-};
+import { Check, ChevronDown, ChevronRight, Download, ExternalLink, CheckCircle2 } from 'lucide-react';
 
 // Task data structure
 const startupTasks = {
   "form-llc": {
     title: "Form Your Florida LLC",
-    description: "Establish your legal business entity",
     tasks: [
       {
         id: "llc-name-search",
@@ -79,7 +48,6 @@ const startupTasks = {
   },
   "register-dba": {
     title: "Register Fictitious Name (DBA)",
-    description: "Create your brand identity",
     tasks: [
       {
         id: "decide-brand",
@@ -105,7 +73,6 @@ const startupTasks = {
   },
   "banking": {
     title: "Open Business Bank & Merchant Accounts",
-    description: "Set up financial infrastructure",
     tasks: [
       {
         id: "choose-bank",
@@ -145,7 +112,6 @@ const startupTasks = {
   },
   "taxes-licenses": {
     title: "Register for State & Local Taxes / Licenses",
-    description: "Ensure compliance with regulations",
     tasks: [
       {
         id: "sales-tax",
@@ -181,7 +147,6 @@ const startupTasks = {
   },
   "accounting": {
     title: "Accounting & Record-Keeping",
-    description: "Organize your financial tracking",
     tasks: [
       {
         id: "choose-software",
@@ -214,7 +179,6 @@ const startupTasks = {
   },
   "insurance": {
     title: "Business Insurance",
-    description: "Protect your business assets",
     tasks: [
       {
         id: "get-quotes",
@@ -236,7 +200,6 @@ const startupTasks = {
   },
   "digital": {
     title: "Digital Foundations",
-    description: "Establish your online presence",
     tasks: [
       {
         id: "domain-purchase",
@@ -262,7 +225,6 @@ const startupTasks = {
   },
   "intellectual-property": {
     title: "Intellectual Property & Branding (Optional)",
-    description: "Protect your brand identity",
     tasks: [
       {
         id: "trademark-search",
@@ -286,7 +248,6 @@ export default function StartupTracker() {
   const [taskStatus, setTaskStatus] = useState({});
   const [expandedSections, setExpandedSections] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [showConfetti, setShowConfetti] = useState(false);
 
   // Load saved progress from localStorage
   useEffect(() => {
@@ -354,223 +315,129 @@ export default function StartupTracker() {
     alert('PDF export functionality would be implemented here using a library like jsPDF or react-pdf');
   };
 
-  // Check if all tasks are complete
-  useEffect(() => {
-    if (completedTasks === totalTasks && totalTasks > 0) {
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 5000);
-    }
-  }, [completedTasks, totalTasks]);
-
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading your progress...</p>
-        </div>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-gray-600">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-40 left-1/2 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
-      </div>
-
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-10 shadow-sm">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg">
-                <Rocket className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  InkPaperCreate Setup Wizard
-                </h1>
-                <p className="text-sm text-gray-600 mt-1">Your journey to business success starts here</p>
-              </div>
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">InkPaperCreate Setup Wizard</h1>
+              <p className="text-sm text-gray-600 mt-1">Complete all tasks before Session 2</p>
             </div>
             <button
               onClick={exportPDF}
-              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               <Download className="h-4 w-4" />
-              <span>Download PDF</span>
+              <span className="hidden sm:inline">Download PDF</span>
             </button>
           </div>
           
-          {/* Progress Section */}
-          <div className="mt-6 bg-gray-50 rounded-xl p-4">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-green-600" />
-                <span className="font-semibold text-gray-800">Overall Progress</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-600">
-                  {completedTasks} of {totalTasks} tasks completed
-                </span>
-                <span className="font-bold text-lg text-gray-800">{Math.round(progressPercentage)}%</span>
-              </div>
+          {/* Progress Bar */}
+          <div className="mt-4">
+            <div className="flex justify-between text-sm text-gray-600 mb-1">
+              <span>{completedTasks} of {totalTasks} tasks completed</span>
+              <span>{Math.round(progressPercentage)}%</span>
             </div>
-            <div className="relative w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+            <div className="w-full bg-gray-200 rounded-full h-3">
               <div 
-                className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full transition-all duration-500 ease-out"
+                className="bg-green-600 h-3 rounded-full transition-all duration-300"
                 style={{ width: `${progressPercentage}%` }}
-              >
-                <div className="absolute inset-0 bg-white/20 animate-shimmer"></div>
-              </div>
-            </div>
-            
-            {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-4">
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1">
-                  <Clock className="h-4 w-4 text-gray-500" />
-                  <span className="text-xs text-gray-500">Est. Time</span>
-                </div>
-                <p className="text-lg font-semibold text-gray-800">2 weeks</p>
-              </div>
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1">
-                  <Target className="h-4 w-4 text-gray-500" />
-                  <span className="text-xs text-gray-500">Sections</span>
-                </div>
-                <p className="text-lg font-semibold text-gray-800">8</p>
-              </div>
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1">
-                  <Award className="h-4 w-4 text-gray-500" />
-                  <span className="text-xs text-gray-500">Completed</span>
-                </div>
-                <p className="text-lg font-semibold text-gray-800">
-                  {Object.entries(startupTasks).filter(([id, _]) => {
-                    const { completed, total } = getSectionProgress(id);
-                    return completed === total;
-                  }).length}
-                </p>
-              </div>
+              />
             </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-4">
-          {Object.entries(startupTasks).map(([sectionId, section], index) => {
+          {Object.entries(startupTasks).map(([sectionId, section]) => {
             const { completed, total } = getSectionProgress(sectionId);
             const isComplete = completed === total;
             const isExpanded = expandedSections[sectionId];
-            const Icon = sectionIcons[sectionId];
-            const colorScheme = sectionColors[sectionId];
             
             return (
-              <div 
-                key={sectionId} 
-                className="group bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
+              <div key={sectionId} className="bg-white rounded-lg shadow-sm border border-gray-200">
                 <button
                   onClick={() => toggleSection(sectionId)}
-                  className="w-full px-6 py-5 flex items-center justify-between hover:bg-gray-50/50 transition-colors rounded-t-xl"
+                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-lg bg-${colorScheme}-100 group-hover:scale-110 transition-transform`}>
-                      <Icon className={`h-6 w-6 text-${colorScheme}-600`} />
-                    </div>
-                    <div className="text-left">
-                      <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                        {section.title}
-                        {isComplete && (
-                          <CheckCircle2 className="h-5 w-5 text-green-600 animate-bounce-once" />
-                        )}
-                      </h2>
-                      <p className="text-sm text-gray-600 mt-1">{section.description}</p>
-                    </div>
-                  </div>
                   <div className="flex items-center gap-3">
-                    <div className="text-right">
-                      <span className={`text-sm font-medium ${isComplete ? 'text-green-600' : 'text-gray-600'}`}>
-                        {completed} / {total} tasks
-                      </span>
-                      <div className="w-24 bg-gray-200 rounded-full h-2 mt-1">
-                        <div 
-                          className={`h-2 rounded-full transition-all duration-300 ${
-                            isComplete ? 'bg-green-600' : `bg-${colorScheme}-600`
-                          }`}
-                          style={{ width: `${(completed / total) * 100}%` }}
-                        />
-                      </div>
-                    </div>
-                    <div className={`transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}>
+                    {isExpanded ? (
                       <ChevronDown className="h-5 w-5 text-gray-400" />
-                    </div>
+                    ) : (
+                      <ChevronRight className="h-5 w-5 text-gray-400" />
+                    )}
+                    <h2 className="text-lg font-semibold text-gray-900">{section.title}</h2>
+                    {isComplete && (
+                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    )}
                   </div>
+                  <span className="text-sm text-gray-600">
+                    {completed} / {total}
+                  </span>
                 </button>
                 
                 {isExpanded && (
-                  <div className="px-6 pb-5 space-y-3 animate-fadeIn">
-                    {section.tasks.map((task, taskIndex) => {
+                  <div className="px-6 pb-4 space-y-3">
+                    {section.tasks.map((task) => {
                       const isTaskComplete = taskStatus[task.id];
                       
                       return (
                         <div
                           key={task.id}
-                          className={`p-4 rounded-lg border-2 transition-all duration-300 hover:shadow-sm ${
+                          className={`p-4 rounded-lg border ${
                             isTaskComplete 
                               ? 'bg-green-50 border-green-200' 
-                              : 'bg-gray-50 border-gray-200 hover:border-gray-300'
+                              : 'bg-gray-50 border-gray-200'
                           }`}
-                          style={{ animationDelay: `${taskIndex * 50}ms` }}
                         >
                           <div className="flex items-start gap-3">
                             <button
                               onClick={() => toggleTask(task.id)}
-                              className={`mt-0.5 flex-shrink-0 w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all duration-200 ${
+                              className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
                                 isTaskComplete
-                                  ? 'bg-green-600 border-green-600 scale-110'
-                                  : 'border-gray-300 hover:border-gray-400 hover:scale-105'
+                                  ? 'bg-green-600 border-green-600'
+                                  : 'border-gray-300 hover:border-gray-400'
                               }`}
                             >
                               {isTaskComplete && (
-                                <Check className="h-4 w-4 text-white animate-check" />
+                                <Check className="h-3 w-3 text-white" />
                               )}
                             </button>
                             
                             <div className="flex-1 space-y-2">
-                              <h3 className={`font-medium transition-all duration-200 ${
-                                isTaskComplete ? 'text-gray-700 line-through opacity-70' : 'text-gray-900'
+                              <h3 className={`font-medium ${
+                                isTaskComplete ? 'text-gray-700 line-through' : 'text-gray-900'
                               }`}>
                                 {task.title}
                               </h3>
                               
                               {task.description && (
-                                <p className={`text-sm transition-all duration-200 ${
-                                  isTaskComplete ? 'text-gray-500 opacity-70' : 'text-gray-600'
-                                }`}>
-                                  {task.description}
-                                </p>
+                                <p className="text-sm text-gray-600">{task.description}</p>
                               )}
                               
                               {task.resources.length > 0 && (
-                                <div className="flex flex-wrap gap-2 mt-3">
+                                <div className="flex flex-wrap gap-2 mt-2">
                                   {task.resources.map((resource, idx) => (
                                     <a
                                       key={idx}
                                       href={resource.url}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm text-blue-700 bg-blue-50 rounded-md hover:bg-blue-100 transition-colors group"
+                                      className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800"
                                     >
-                                      <ExternalLink className="h-3.5 w-3.5 group-hover:scale-110 transition-transform" />
+                                      <ExternalLink className="h-3 w-3" />
                                       {resource.label}
                                     </a>
                                   ))}
@@ -589,118 +456,16 @@ export default function StartupTracker() {
         </div>
         
         {/* Completion Message */}
-        {completedTasks === totalTasks && totalTasks > 0 && (
-          <div className="mt-8 relative">
-            {showConfetti && (
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <Sparkles className="h-16 w-16 text-yellow-500 animate-ping" />
-              </div>
-            )}
-            <div className="p-8 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl shadow-xl text-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-white/10 animate-shimmer"></div>
-              <div className="relative z-10">
-                <CheckCircle2 className="h-16 w-16 text-white mx-auto mb-4 animate-bounce-once" />
-                <h3 className="text-2xl font-bold mb-2">Congratulations! 🎉</h3>
-                <p className="text-lg opacity-90">
-                  You've completed all startup tasks! You're ready for Session 2.
-                </p>
-                <p className="mt-4 text-sm opacity-80">
-                  Please notify your consultant to schedule the next session on Systems & Automation.
-                </p>
-                <button className="mt-6 px-8 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
-                  Contact Consultant
-                </button>
-              </div>
-            </div>
+        {completedTasks === totalTasks && (
+          <div className="mt-8 p-6 bg-green-50 border border-green-200 rounded-lg text-center">
+            <CheckCircle2 className="h-12 w-12 text-green-600 mx-auto mb-3" />
+            <h3 className="text-lg font-semibold text-green-900">All tasks completed!</h3>
+            <p className="text-green-700 mt-2">
+              Great job! You're ready for Session 2. Please notify your consultant to schedule the next session.
+            </p>
           </div>
         )}
       </main>
-
-      <style jsx>{`
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-        
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-        
-        @keyframes bounce-once {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-        
-        @keyframes check {
-          0% {
-            transform: scale(0);
-          }
-          50% {
-            transform: scale(1.2);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        
-        .animate-shimmer {
-          animation: shimmer 2s infinite;
-        }
-        
-        .animate-bounce-once {
-          animation: bounce-once 0.5s ease-in-out;
-        }
-        
-        .animate-check {
-          animation: check 0.3s ease-in-out;
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out forwards;
-        }
-      `}</style>
     </div>
   );
 }
